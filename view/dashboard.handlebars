@@ -1,9 +1,20 @@
-<section class="container">
-  <h3 class="gallery-name">{{gallery.name}}</h3>
-  <section class="flex-row justify-center">
-    {{#each gallery.paintings as |painting|}}
-    {{> post-details}}
-    {{/each}}
-  </section>
-  <button>+ Post</button>
-</section>
+<div class="row justify-space-between-md">
+  <div class="login-card">
+    <h2 class="page-title">New Post/h2>
+    <form class="form login-form">
+      <div class="form-group">
+        <label for="post-insert">Title:</label>
+        <input class="form-input" type="text" id="post-insert" />
+      </div>
+      <div class="form-group">
+        <label for="body-insert">Descrioption:</label>
+        <input class="form-input" type="password" id="body-insert" />
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">login</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="../public/js/post.js"></script>
