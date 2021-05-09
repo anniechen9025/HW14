@@ -4,19 +4,20 @@ const withAuth = require('../../utils/auth');
 
 router.get('/', withAuth, async (req, res) => {
     try {
-        res.status(200).json(newPokemon);
+        const postData = await Post.findAll();
+        res.status(200).json(postData);
     } catch (err) {
         res.status(400).json(err);
     }
 });
 
-router.get('/:id', withAuth, async (req, res) => {
-    try {
-        res.status(200).json(newPokemon);
-    } catch (err) {
-        res.status(400).json(err);
-    }
-});
+// router.get('/:id', withAuth, async (req, res) => {
+//     try {
+//         res.status(200).json(newPokemon);
+//     } catch (err) {
+//         res.status(400).json(err);
+//     }
+// });
 
 router.put('/:id', withAuth, async (req, res) => {
     try {
