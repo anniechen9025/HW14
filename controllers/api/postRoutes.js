@@ -13,6 +13,9 @@ router.get('/', withAuth, async (req, res) => {
 
 // router.get('/:id', withAuth, async (req, res) => {
 //     try {
+//         const postData = await Post.findOne({
+
+//         });
 //         res.status(200).json(newPokemon);
 //     } catch (err) {
 //         res.status(400).json(err);
@@ -21,7 +24,14 @@ router.get('/', withAuth, async (req, res) => {
 
 router.put('/:id', withAuth, async (req, res) => {
     try {
-        res.status(200).json(newPokemon);
+        const [affectedRows] = await Post.update(req.body,{
+            where:{
+                id:req.params.id,
+            }
+        })
+        if(affectedRows>0){
+            res.status(200).end();
+        }
     } catch (err) {
         res.status(400).json(err);
     }
