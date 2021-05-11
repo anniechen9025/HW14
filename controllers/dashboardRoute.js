@@ -4,6 +4,7 @@ const withAuth = require('../utils/auth');
 
 //get / is not getting the right html
 router.get('/', async (req, res) => {
+    console.log(`${req.session.user_id} dashboardRoute.js line 7`);
     try {
         const postData = await Post.findAll({
             where:{
