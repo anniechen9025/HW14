@@ -1,11 +1,11 @@
 <div>
-    {{#each posts}}
+    {{#each posts as |post|}}
     <section class="post-card">
-        <a href="/post">
-            <header>{{title}}</header>
-            <p>{{description}}</p>>
+        <a href="placeholder">
+            <header>{{post.title}}</header>
+            <p>{{post.description}}</p>>
         </a>
-        <div>{{body}}</div>
+        {{!-- <div>{{body}}</div> --}}
     </section>
     {{/each}}
 </div>
