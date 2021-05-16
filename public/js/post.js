@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const addpostButton = document.getElementById("post-btn");
-    const editpostButton = document.getElementById("edit-btn");
+    const addpostform = document.getElementById("new-post");
+    const editpostform = document.getElementById("edit-btn");
 
     const addNewpost = async (event) => {
         event.preventDefault();
@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const description = document.querySelector('#post-body').value.trim();
 
         if (title && description) {
-            const response = await fetch('/api/dashboard/addpost', {
+            console.log(title);
+            const response = await fetch('/api/post/addpost', {
                 method: 'POST',
                 body: JSON.stringify({ title, description }),
                 headers: { 'Content-Type': 'application/json' },
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const description = document.querySelector('#editpost-body').value.trim();
 
         if (id && title && description) {
-            const response = await fetch(`/api/users/pw`, {
+            const response = await fetch(`/api/post/editpost`, {
                 method: 'PUT',
                 body: JSON.stringify({ password }),
                 headers: { 'Content-Type': 'application/json' },
@@ -49,22 +50,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    addpostform.addEventListener('submit',addNewpost);
 
-    addpostButton.addEventListener('click', (e) => {
-        // Prevent the default submission of the form
-        e.preventDefault();
-        // Get the values input by the user in the form fields
-        const title = document.querySelector('#post-title').value;
-        const description = document.querySelector('#post-body').value;
 
-        if (title && description) {
-            // If the credentials are valid, show an alert box and reload the page
-            addNewpost(e);
-        } else {
-            // Otherwise, make the login error message show (change its oppacity)
-            loginErrorMsg.style.opacity = 1;
-        }
-    })
+    // addpostButton.addEventListener('submit', (e) => {
+    //     // Prevent the default submission of the form
+    //     e.preventDefault();
+    //     // Get the values input by the user in the form fields
+    //     const title = document.querySelector('#post-title').value;
+    //     const description = document.querySelector('#post-body').value;
+    //     console.log(title,description);
+    //     if (title && description) {
+    //         // If the credentials are valid, show an alert box and reload the page
+    //         addNewpost(e);
+    //         alert('sucessfully submitted')
+    //     } else {
+    //         // Otherwise, make the login error message show (change its oppacity)
+    //         loginErrorMsg.style.opacity = 1;
+    //         alert('not working')
+    //     }
+    // })
 
     editpostButton.addEventListener('click', (e) => {
         // Prevent the default submission of the form
