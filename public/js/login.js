@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', () => {
 const signupButton = document.getElementById("signup-form-submit");
 const loginButton = document.getElementById("login-form-submit");
 
@@ -14,13 +15,12 @@ const loginFormHandler = async (event) => {
             headers: { 'Content-Type': 'application/json' },
         });
 
-        document.location.replace('/');
-
-        // if (response.ok) {
-        //     document.location.replace('/');
-        // } else {
-        //     alert('Failed to log in.');
-        // }
+        if (response.ok) {
+            document.location.replace('/newpost');
+            alert("You have successfully logged in.");
+        } else {
+            alert('Failed to log in.');
+        }
     }
 };
 
@@ -38,13 +38,12 @@ const signupFormHandler = async (event) => {
             headers: { 'Content-Type': 'application/json' },
         });
 
-        document.location.replace('/');
-
-        // if (response.ok) {
-        //     document.location.replace('/');
-        // } else {
-        //     alert('Failed to sign up.');
-        // }
+        if (response.ok) {
+            document.location.replace('/newpost');
+            alert("You have successfully Signup.");
+        } else {
+            alert('Failed to sign up.');
+        }
     }
 };
 
@@ -52,7 +51,7 @@ const signupFormHandler = async (event) => {
 //     .querySelector('.login-form')
 //     .addEventListener('submit', loginFormHandler);
 
-loginButton.addEventListener("click", (e) => {
+loginButton.addEventListener('click', (e) => {
     // Prevent the default submission of the form
     e.preventDefault();
     // Get the values input by the user in the form fields
@@ -62,14 +61,13 @@ loginButton.addEventListener("click", (e) => {
     if (email && password) {
         // If the credentials are valid, show an alert box and reload the page
         loginFormHandler(e);
-        alert("You have successfully logged in.");
     } else {
         // Otherwise, make the login error message show (change its oppacity)
         loginErrorMsg.style.opacity = 1;
     }
 })
 
-signupButton.addEventListener("click", (e) => {
+signupButton.addEventListener('click', (e) => {
     // Prevent the default submission of the form
     e.preventDefault();
     // Get the values input by the user in the form fields
@@ -80,7 +78,6 @@ signupButton.addEventListener("click", (e) => {
     if (email && password && username) {
         // If the credentials are valid, show an alert box and reload the page
         signupFormHandler(e);
-        alert("You have successfully logged in.");
     } else {
         // Otherwise, make the login error message show (change its oppacity)
         loginErrorMsg.style.opacity = 1;
@@ -89,3 +86,4 @@ signupButton.addEventListener("click", (e) => {
 // document
 //     .querySelector('.signup-form')
 //     .addEventListener('submit', signupFormHandler);
+});

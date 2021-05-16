@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { Gallery, Painting } = require('../models');
+const withAuth = require('../utils/auth');
+const { User, Post, Comment } = require('../models');
 
 // GET all galleries for homepage
 router.get('/', async (req, res) => {
@@ -28,8 +29,23 @@ router.get('/signup', (req, res) => {
     res.redirect('/');
     return;
   }
-
   res.render('signup');
+});
+
+router.get('/newpost', withAuth, (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+  res.render('newpost');
+});
+
+router.get('/editpost', withAuth, (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+  res.render('editpost');
 });
 
 

@@ -11,25 +11,27 @@ router.get('/', withAuth, async (req, res) => {
     }
 });
 
-// router.get('/:id', withAuth, async (req, res) => {
-//     try {
-//         const postData = await Post.findOne({
-
-//         });
-//         res.status(200).json(newPokemon);
-//     } catch (err) {
-//         res.status(400).json(err);
-//     }
-// });
+router.get('/own', withAuth, async (req, res) => {
+    try {
+        const postData = await Post.findAll({
+            where: {
+                user_id: req.session.user_id
+            },
+        });
+        res.status(200).json(postData);
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
 
 router.put('/:id', withAuth, async (req, res) => {
     try {
-        const [affectedRows] = await Post.update(req.body,{
-            where:{
-                id:req.params.id,
+        const [affectedRows] = await Post.update(req.body, {
+            where: {
+                id: req.params.id,
             }
         })
-        if(affectedRows>0){
+        if (affectedRows > 0) {
             res.status(200).end();
         }
     } catch (err) {
