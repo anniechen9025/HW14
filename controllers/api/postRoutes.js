@@ -11,12 +11,22 @@ router.get('/', withAuth, async (req, res) => {
     }
 });
 
-router.get('/own', withAuth, async (req, res) => {
+router.get('/:id', withAuth, async (req, res) => {
     try {
-        const postData = await Post.findAll({
-            where: {
-                user_id: req.session.user_id
-            },
+        // console.log(req.params.id,);
+        // const postData = await Post.findOne({
+        //     where: {
+        //         // user_id: req.session.user_id
+        //         id: req.params.id
+        //     },
+        //     include: [User]
+        // });
+        // const post = postData.map(post => post.get({
+        //     plain: true
+        // }))
+        console.log(postData);
+        res.render('post', {
+            postData
         });
         res.status(200).json(postData);
     } catch (err) {
@@ -69,19 +79,19 @@ router.post('/addpost', withAuth, async (req, res) => {
 
 router.put('/editpost', async (req, res) => {
     try {
-      const newPost = await User.update(
-        req.body.description,
-      {
-        where: {
-          id: req.body.id,
-        },
-      })
-      console.log(newPost);
-      res.status(200).json(newPost);
+        const newPost = await User.update(
+            req.body.description,
+            {
+                where: {
+                    id: req.body.id,
+                },
+            })
+        console.log(newPost);
+        res.status(200).json(newPost);
     } catch (err) {
-      res.status(400).json(err);
+        res.status(400).json(err);
     }
-  });
+});
 
 
 router.delete('/:id', withAuth, async (req, res) => {

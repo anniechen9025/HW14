@@ -2,9 +2,11 @@
     {{#each posts as |post|}}
     {{log post}}
     <section class="post-card">
-        <a href="placeholder">
+        <a href="api/posts/{{id}}">
             <header>{{post.title}}</header>
             <p>{{post.description}}</p>>
+            <button class="">Comment</button>
+            <button>Edit</button>
         </a>
         {{!-- <div>{{body}}</div> --}}
     </section>

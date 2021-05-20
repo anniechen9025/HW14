@@ -37,13 +37,13 @@ router.get('/signup', (req, res) => {
   res.render('signup');
 });
 
-router.get('/newpost', withAuth, (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect('/');
-    return;
-  }
-  res.render('newpost');
-});
+// router.get('/post/:id', withAuth, (req, res) => {
+//   // if (req.session.loggedIn) {
+//   //   res.redirect('/');
+//   //   return;
+//   // }
+//   // res.render('post');
+// });
 
 router.get('/editpost', withAuth, (req, res) => {
   if (req.session.loggedIn) {
