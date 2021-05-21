@@ -5,7 +5,7 @@
   <section class="post-card">
     <header>{{post.title}} --by {{user.username}}</header>
     <p>{{post.description}}</p>
-    <button><a href="/newcomment">Comment<a></button>
+    {{!-- <button><a href="/newcomment">Comment<a></button> --}}
   </section>
   {{!-- {{/with}}
   {{/with}} --}}
@@ -19,8 +19,15 @@
   </section>
   {{/each}}
 
+    <div class="card-header">
+        <h2>New Comment</h2>
+    </div>
+    <form class="card-body" id="new-comment">
+        <textarea name="comment-body" id="comment-body" cols="30" rows="10" class="form-input"></textarea>
+        <button class="btn" id="comment-btn">Submit</button>
+    </form>
 </div>
 
 {{!-- <a href="/dashboard/new">New Post</a> --}}
 
-<script src="./js/post.js"></script>
+<script src="/js/comment.js"></script>
