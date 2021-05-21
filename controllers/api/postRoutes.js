@@ -2,10 +2,17 @@ const router = require('express').Router();
 const { Post, User, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.get('/', withAuth, async (req, res) => {
+router.get('/edit/:id', withAuth, async (req, res) => {
     try {
-        const postData = await Post.findAll();
-        res.status(200).json(postData);
+        const posts = await Post.findOne({
+            where: {
+                id: req.params.id
+            },
+            include: [User]
+        });
+        res.render('editpost', {
+            posts,
+        });
     } catch (err) {
         res.status(400).json(err);
     }
@@ -36,7 +43,7 @@ router.get('/:id', withAuth, async (req, res) => {
     }
 });
 
-router.put('/:id', withAuth, async (req, res) => {
+router.put('/edit/:id', withAuth, async (req, res) => {
     try {
         const [affectedRows] = await Post.update(req.body, {
             where: {

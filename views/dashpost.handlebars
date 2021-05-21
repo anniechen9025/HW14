@@ -1,0 +1,16 @@
+<div>
+  {{#each posts as |post|}}
+  <section class="post-card">
+    <a href="api/posts/edit/{{id}}">
+    <header>{{post.title}}</header>
+    <p>{{post.description}}</p>
+    </a>
+  </section>
+  {{/each}}
+</div>
+<footer>
+    <button><a href ="/newpost">NEW POST +</a></button>
+</footer>
+{{!-- <a href="/dashboard/new">New Post</a> --}}
+
+<script src="./js/post.js"></script>

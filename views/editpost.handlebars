@@ -1,13 +1,17 @@
 <div>
+  <section class="post-card">
+    <p>Post</p>
+    <header>{{posts.title}}</header>
+    <p>{{posts.description}}</p>
+  </section>
+
   <div class="card-header">
     <h2>Edit Post</h2>
   </div>
   <form class="card-body" id="new-post">
-    <input type="text" class="form-input" name="post-id" id="editpost-id"/>
     <input type="text" class="form-input" name="post-title" id="editpost-title"/>
     <textarea name="post-body" id="editpost-body" cols="30" rows="10" class="form-input"></textarea>
     <button class="btn" id = "edit-btn">Submit</button>
-    <p><a href="/dashboard/new">New Post</a></p>
   </form>
 </div>
 

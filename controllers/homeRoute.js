@@ -37,13 +37,13 @@ router.get('/signup', (req, res) => {
   res.render('signup');
 });
 
-// router.get('/post/:id', withAuth, (req, res) => {
-//   // if (req.session.loggedIn) {
-//   //   res.redirect('/');
-//   //   return;
-//   // }
-//   // res.render('post');
-// });
+router.get('/newpost', withAuth, (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+  res.render('newpost');
+});
 
 router.get('/editpost', withAuth, (req, res) => {
   if (req.session.loggedIn) {
@@ -51,6 +51,35 @@ router.get('/editpost', withAuth, (req, res) => {
     return;
   }
   res.render('editpost');
+});
+
+router.get('/newcomment', withAuth, async (req, res) => {
+  try {
+  // if (req.session.loggedIn) {
+  //   res.redirect('/');
+  //   return;
+  // }
+//   const posts = await Post.findOne({
+//     where: {
+//         id: req.params.id
+//     },
+//     include: [User]
+// });
+// const commentData = await Comment.findAll({
+//     where:{
+//         post_id: req.params.id
+//     },
+//     include:[User]
+// });
+// const comments = commentData.map(comment => comment.get({plain:true}))
+// res.render('newcomment', {
+//     posts,
+//     comments
+// });
+res.render('newcomment');
+} catch (err) {
+  res.status(400).json(err);
+}
 });
 
 

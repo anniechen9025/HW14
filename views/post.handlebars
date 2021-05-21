@@ -1,20 +1,26 @@
 <div>
+  
+  {{!-- {{#with posts as |post|}}
+  {{#with posts.user as |user|}} --}}
   <section class="post-card">
-
-    <header>{{title}} --by {{user.username}}</header>
-    <p>{{description}}</p>
-    <button>Comment</button>
+    <header>{{post.title}} --by {{user.username}}</header>
+    <p>{{post.description}}</p>
+    <button><a href="/newcomment">Comment<a></button>
   </section>
+  {{!-- {{/with}}
+  {{/with}} --}}
+ 
 
   {{#each comments as |comment|}}
   <section class="comment-card">
 
-    <header>{{comment.user.username}}</header>
+    <header>ID:{{comment.user.username}}</header>
     <p>{{comment.body}}</p>
   </section>
   {{/each}}
+
 </div>
 
 {{!-- <a href="/dashboard/new">New Post</a> --}}
 
-<script src="/js/post.js"></script>
+<script src="./js/post.js"></script>

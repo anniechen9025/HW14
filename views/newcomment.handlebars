@@ -1,0 +1,25 @@
+<div>
+    <section class="post-card">
+        <p>Post</p>
+        <header>{{post.title}} --by {{user.username}}</header>
+        <p>{{post.description}}</p>
+    </section>
+
+    <div class="card-header">
+        <h2>New Comment</h2>
+    </div>
+    <form class="card-body" id="new-comment">
+        <textarea name="comment-body" id="comment-body" cols="30" rows="10" class="form-input"></textarea>
+        <button class="btn" id="comment-btn">Submit</button>
+    </form>
+
+    {{#each comments as |comment|}}
+    <section class="comment-card">
+
+        <header>ID:{{comment.user.username}}</header>
+        <p>{{comment.body}}</p>
+    </section>
+    {{/each}}
+</div>
+{{!--
+<script src="./js/post.js"></script> --}}
