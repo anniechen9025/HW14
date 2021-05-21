@@ -71,20 +71,20 @@ document.addEventListener('DOMContentLoaded', () => {
     //     }
     // })
 
-    editpostButton.addEventListener('click', (e) => {
-        // Prevent the default submission of the form
-        e.preventDefault();
-        // Get the values input by the user in the form fields
-        const id = document.querySelector('#editpost-id').value;
-        const title = document.querySelector('#editpost-title').value;
-        const description = document.querySelector('#editpost-body').value;
+    // editpostButton.addEventListener('click', (e) => {
+    //     // Prevent the default submission of the form
+    //     e.preventDefault();
+    //     // Get the values input by the user in the form fields
+    //     const id = document.querySelector('#editpost-id').value;
+    //     const title = document.querySelector('#editpost-title').value;
+    //     const description = document.querySelector('#editpost-body').value;
 
-        if (id && title && description) {
-            // If the credentials are valid, show an alert box and reload the page
-            editPost(e);
-        } else {
-            // Otherwise, make the login error message show (change its oppacity)
-            loginErrorMsg.style.opacity = 1;
-        }
-    })
+    //     if (id && title && description) {
+    //         // If the credentials are valid, show an alert box and reload the page
+    //         editPost(e);
+    //     } else {
+    //         // Otherwise, make the login error message show (change its oppacity)
+    //         loginErrorMsg.style.opacity = 1;
+    //     }
+    // })
 });

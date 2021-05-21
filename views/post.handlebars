@@ -1,12 +1,12 @@
 <div>
-  <section class="post">
-    <h3>{{post.title}}</h3>
-    <div>
-      {{post.user.username}}
-      <br>{{post.description}}
-      <button>Comment</button>
-      <button>Edit</button>
-    </div>
+  <section class="post-card">
+
+    <header>{{posts.title}} --by {{posts.user.username}}</header>
+    <p>{{posts.description}}</p>
+    <button>Comment</button>
   </section>
 </div>
+
+  {{!-- <a href="/dashboard/new">New Post</a> --}}
+
 <script src="/js/post.js"></script>
