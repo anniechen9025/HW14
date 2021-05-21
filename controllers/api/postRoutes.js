@@ -13,6 +13,7 @@ router.get('/edit/:id', withAuth, async (req, res) => {
         res.render('editpost', {
             posts,
         });
+        // res.status(200).json(posts)
     } catch (err) {
         res.status(400).json(err);
     }
@@ -37,12 +38,13 @@ router.get('/:id', withAuth, async (req, res) => {
             posts,
             comments
         });
-    
+        // res.status(200).json(posts)
     } catch (err) {
         res.status(400).json(err);
     }
 });
 
+//route is working but couldnt render it correctly
 router.put('/edit/:id', withAuth, async (req, res) => {
     try {
         const [affectedRows] = await Post.update(req.body, {
@@ -51,12 +53,27 @@ router.put('/edit/:id', withAuth, async (req, res) => {
             }
         })
         if (affectedRows > 0) {
-            res.status(200).end();
+            // res.status(200).end();
+            res.status(200),json(affectedRows);
         }
+        console.log(affectedRows);
     } catch (err) {
         res.status(400).json(err);
     }
 });
+
+// router.post('/', withAuth, async (req, res) => {
+//     try {
+//         const newPost = await Post.create({
+//             ...req.body,
+//             user_id: req.session.user_id,
+//         });
+
+//         res.status(200).json(newPost);
+//     } catch (err) {
+//         res.status(400).json(err);
+//     }
+// });
 
 router.post('/', withAuth, async (req, res) => {
     try {
@@ -64,19 +81,6 @@ router.post('/', withAuth, async (req, res) => {
             ...req.body,
             user_id: req.session.user_id,
         });
-
-        res.status(200).json(newPost);
-    } catch (err) {
-        res.status(400).json(err);
-    }
-});
-
-router.post('/addpost', withAuth, async (req, res) => {
-    try {
-        const newPost = await Post.create({
-            ...req.body,
-            user_id: req.session.user_id,
-        });
         console.log(newPost);
 
         res.status(200).json(newPost);
@@ -86,21 +90,22 @@ router.post('/addpost', withAuth, async (req, res) => {
     }
 });
 
-router.put('/editpost', async (req, res) => {
-    try {
-        const newPost = await User.update(
-            req.body.description,
-            {
-                where: {
-                    id: req.body.id,
-                },
-            })
-        console.log(newPost);
-        res.status(200).json(newPost);
-    } catch (err) {
-        res.status(400).json(err);
-    }
-});
+// router.put('/editpost', async (req, res) => {
+//     console.log(req.body);
+//     try {
+//         const updatePost = await Post.update(
+//             req.body.description,
+//             {
+//                 where: {
+//                     id: req.body.id,
+//                 },
+//             })
+//         console.log(updatePost);
+//         res.status(200).json(updatePost);
+//     } catch (err) {
+//         res.status(400).json(err);
+//     }
+// });
 
 
 router.delete('/:id', withAuth, async (req, res) => {

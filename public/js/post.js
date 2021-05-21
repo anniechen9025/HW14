@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const addpostform = document.getElementById("new-post");
-    const editpostform = document.getElementById("edit-btn");
+    const editpostform = document.getElementById("edit-post");
 
     const addNewpost = async (event) => {
         event.preventDefault();
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (title && description) {
             console.log(title);
-            const response = await fetch('/api/post/addpost', {
+            const response = await fetch('/api/posts/', {
                 method: 'POST',
                 body: JSON.stringify({ title, description }),
                 headers: { 'Content-Type': 'application/json' },
@@ -28,29 +28,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const editPost = async (event) => {
         event.preventDefault();
 
-        const id = document.querySelector('#editpost-id').value.trim();
         const title = document.querySelector('#editpost-title').value.trim();
         const description = document.querySelector('#editpost-body').value.trim();
 
-        if (id && title && description) {
-            const response = await fetch(`/api/post/editpost`, {
+        if ( title && description) {
+            const response = await fetch('/api/posts/edit/:id', {
                 method: 'PUT',
-                body: JSON.stringify({ password }),
+                body: JSON.stringify({ title, description }),
                 headers: { 'Content-Type': 'application/json' },
             });
 
             if (response.ok) {
-                document.location.replace('/menu');
-                alert('You have successfully updating password.');
+                document.location.replace('/dashboard');
+                alert('You have successfully updating your post.');
             } else {
                 alert('Failed to log in.');
             }
             console.log(response);
-            //document.location.replace('/menu');
         }
     };
 
     addpostform.addEventListener('submit',addNewpost);
+    editpostform.addEventListener('submit',editPost);
 
 
     // addpostButton.addEventListener('submit', (e) => {
