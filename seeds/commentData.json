@@ -1,11 +1,14 @@
 [
     {
-        "body": "that is awsome"
+        "body": "that is awsome",
+        "post_id": 1
     },
     {
-        "body": "such a good post"
+        "body": "such a good post",
+        "post_id": 1
     },
     {
-        "body": "you are just bad"
+        "body": "you are just bad",
+        "post_id": 1
     }
 ]

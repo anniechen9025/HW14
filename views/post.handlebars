@@ -1,12 +1,20 @@
 <div>
   <section class="post-card">
 
-    <header>{{posts.title}} --by {{posts.user.username}}</header>
-    <p>{{posts.description}}</p>
+    <header>{{title}} --by {{user.username}}</header>
+    <p>{{description}}</p>
     <button>Comment</button>
   </section>
+
+  {{#each comments as |comment|}}
+  <section class="comment-card">
+
+    <header>{{comment.user.username}}</header>
+    <p>{{comment.body}}</p>
+  </section>
+  {{/each}}
 </div>
 
-  {{!-- <a href="/dashboard/new">New Post</a> --}}
+{{!-- <a href="/dashboard/new">New Post</a> --}}
 
 <script src="/js/post.js"></script>
