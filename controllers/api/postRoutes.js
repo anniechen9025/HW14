@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Post, User, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+//route to get the post that will be edit
 router.get('/edit/:id', withAuth, async (req, res) => {
     try {
         const posts = await Post.findOne({
@@ -19,6 +20,7 @@ router.get('/edit/:id', withAuth, async (req, res) => {
     }
 });
 
+//get a # post
 router.get('/:id', withAuth, async (req, res) => {
     try {
         const posts = await Post.findOne({
@@ -44,13 +46,14 @@ router.get('/:id', withAuth, async (req, res) => {
     }
 });
 
-//route is working but couldnt render it correctly
+//route is working backend (for somereason showing {})
+//update the post that was selected to be edit
 router.put('/edit/:id', withAuth, async (req, res) => {
     try {
         const [affectedRows] = await Post.update(req.body, {
             where: {
                 id: req.params.id,
-            }
+            },
         })
         if (affectedRows > 0) {
             // res.status(200).end();
@@ -62,11 +65,14 @@ router.put('/edit/:id', withAuth, async (req, res) => {
     }
 });
 
+//adding comment to specific # of post
+//backend works not front end
 router.post('/:id', withAuth, async (req, res) => {
     try {
         const newComment = await Comment.create({
             ...req.body,
             post_id: req.params.id,
+            user_id: req.session.user_id,
         });
 
         res.status(200).json(newComment);
@@ -75,6 +81,7 @@ router.post('/:id', withAuth, async (req, res) => {
     }
 });
 
+//adding post under loggedin user_id
 router.post('/', withAuth, async (req, res) => {
     try {
         const newPost = await Post.create({

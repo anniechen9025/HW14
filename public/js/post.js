@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (response.ok) {
-                document.location.replace('/');
+                document.location.replace('/dashboard');
                 alert("You have successfully adding post.");
             } else {
                 alert('Failed to log in.');
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const title = document.querySelector('#editpost-title').value.trim();
         const description = document.querySelector('#editpost-body').value.trim();
 
-        if ( title && description) {
+        if (title && description) {
             const response = await fetch('/api/posts/edit/:id', {
                 method: 'PUT',
                 body: JSON.stringify({ title, description }),
@@ -44,12 +44,11 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 alert('Failed to log in.');
             }
-            console.log(response);
         }
     };
 
-    addpostform.addEventListener('submit',addNewpost);
-    editpostform.addEventListener('submit',editPost);
+    document.addEventListener('submit', addNewpost);
+    document.addEventListener('submit', editPost);
 
 
     // addpostButton.addEventListener('submit', (e) => {
