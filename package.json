@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anniechen9025/HW14.git"
+    "url": "git+https://github.com/anniechen9025/tech-blog.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/anniechen9025/HW14/issues"
+    "url": "https://github.com/anniechen9025/tech-blog/issues"
   },
-  "homepage": "https://github.com/anniechen9025/HW14#readme",
+  "homepage": "https://github.com/anniechen9025/tech-blog#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "connect-session-sequelize": "^7.1.1",
