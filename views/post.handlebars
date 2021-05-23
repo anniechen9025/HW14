@@ -1,17 +1,9 @@
 <div>
-
-  {{!-- {{#with posts as |post|}}
-  {{#with posts.user as |user|}} --}}
-  {{!-- {{#each post as |post|}} --}}
   {{log post.dataValues}}
   <section class="post-card">
     <header>{{post.dataValues.title}}</header>
     <p>{{post.dataValues.description}}</p>
   </section>
-  {{!-- {{/each}} --}}
-  {{!-- {{/with}}
-  {{/with}} --}}
-
 
   {{#each comments as |comment|}}
   <section class="comment-card">
@@ -36,7 +28,5 @@
     </div>
   </form>
 </div>
-
-{{!-- <a href="/dashboard/new">New Post</a> --}}
 
 <script src="/js/comment.js"></script>

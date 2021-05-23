@@ -46,8 +46,7 @@ router.get('/:id', withAuth, async (req, res) => {
     }
 });
 
-//route is working backend (for somereason showing {})
-//update the post that was selected to be edit
+//route to update the post that will be edit
 router.put('/edit/:id', withAuth, async (req, res) => {
     try {
         const updatedPost = await Post.update(req.body, {
@@ -64,8 +63,7 @@ router.put('/edit/:id', withAuth, async (req, res) => {
     }
 });
 
-//adding comment to specific # of post
-//backend works not front end
+//route to add comment to corsponding post
 router.post('/:id', withAuth, async (req, res) => {
     try {
         console.log(req.session.user_id);
@@ -81,7 +79,7 @@ router.post('/:id', withAuth, async (req, res) => {
     }
 });
 
-//adding post under loggedin user_id
+//route to create post
 router.post('/', withAuth, async (req, res) => {
     try {
         const newPost = await Post.create({
@@ -97,24 +95,7 @@ router.post('/', withAuth, async (req, res) => {
     }
 });
 
-// router.put('/editpost', async (req, res) => {
-//     console.log(req.body);
-//     try {
-//         const updatePost = await Post.update(
-//             req.body.description,
-//             {
-//                 where: {
-//                     id: req.body.id,
-//                 },
-//             })
-//         console.log(updatePost);
-//         res.status(200).json(updatePost);
-//     } catch (err) {
-//         res.status(400).json(err);
-//     }
-// });
-
-
+//to delete the post created before
 router.delete('/:id', withAuth, async (req, res) => {
     try {
         const postData = await Post.destroy({

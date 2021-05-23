@@ -2,7 +2,7 @@ const router = require('express').Router();
 const withAuth = require('../utils/auth');
 const { User, Post, Comment } = require('../models');
 
-// GET all galleries for homepage
+// GET all posts for homepage
 router.get('/', async (req, res) => {
   try {
     const postData = await Post.findAll({
@@ -55,31 +55,10 @@ router.get('/editpost', withAuth, (req, res) => {
 
 router.get('/newcomment', withAuth, async (req, res) => {
   try {
-  // if (req.session.loggedIn) {
-  //   res.redirect('/');
-  //   return;
-  // }
-//   const posts = await Post.findOne({
-//     where: {
-//         id: req.params.id
-//     },
-//     include: [User]
-// });
-// const commentData = await Comment.findAll({
-//     where:{
-//         post_id: req.params.id
-//     },
-//     include:[User]
-// });
-// const comments = commentData.map(comment => comment.get({plain:true}))
-// res.render('newcomment', {
-//     posts,
-//     comments
-// });
-res.render('newcomment');
-} catch (err) {
-  res.status(400).json(err);
-}
+    res.render('newcomment');
+  } catch (err) {
+    res.status(400).json(err);
+  }
 });
 
 
