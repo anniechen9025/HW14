@@ -3,7 +3,7 @@
   {{!-- {{#with posts as |post|}}
   {{#with posts.user as |user|}} --}}
   {{!-- {{#each post as |post|}} --}}
-  {{log post}}
+  {{log post.dataValues}}
   <section class="post-card">
     <header>{{post.dataValues.title}}</header>
     <p>{{post.dataValues.description}}</p>
@@ -17,16 +17,23 @@
   <section class="comment-card">
 
     <header>ID:{{comment.user.username}}</header>
+    <text>created by {{format_date comment.date_created}}</text>
     <p>{{comment.body}}</p>
   </section>
   {{/each}}
 
   <div class="card-header">
-    <h2>New Comment</h2>
+    <h3>New Comment</h3>
   </div>
-  <form class="card-body" id="new-comment">
-    <textarea name="comment-body" id="comment-body" cols="30" rows="10" class="form-input"></textarea>
-    <button class="btn" id="comment-btn">Submit</button>
+  <form data-id="{{post.dataValues.id}}" class="card-body" id="new-comment">
+    <div class="form-group">
+      <label for="comment-create">Comment:</label>
+      </br>
+      <textarea name="comment-body" id="comment-body" cols="30" rows="10" class="form-input"></textarea>
+    </div>
+    <div class="form-group">
+      <button class="btn btn btn-secondary" type="submit" id="comment-btn">Submit</button>
+    </div>
   </form>
 </div>
 

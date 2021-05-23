@@ -1,9 +1,9 @@
 <div>
     {{#each posts as |post|}}
     {{log post}}
-    <section class="post-card">
+    <section class="post-group post-card">
         <a href="api/posts/{{id}}">
-            <header>{{post.title}} --by {{post.user.username}}</header>
+            <header>{{post.title}} --by {{post.user.username}} created at {{format_date post.date_created}}</header>
             <p>{{post.description}}</p>
         </a>
         {{!-- <div>{{body}}</div> --}}

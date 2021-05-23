@@ -1,17 +1,31 @@
 <div>
+  {{log posts}}
   <section class="post-card">
-    <header>{{posts.dataValues.title}}</header>
+    <header>{{posts.dataValues.title}} created at {{format_date posts.dataValues.date_created}}</header>
     <p>{{posts.dataValues.description}}</p>
+    {{!-- <p>at {{format_date posts.date_created}}</p> --}}
+    <button type="submit" class="btn btn btn-secondary" data-id="{{posts.dataValues.id}}" id="delete-button">Delete</button>
+    </br>
   </section>
 
   <div class="card-header">
-    <h2>Edit Post</h2>
+    <h3>Edit Post</h3>
   </div>
-  <form class="card-body" id="edit-post">
-    <input type="text" class="form-input" name="post-title" id="editpost-title"/>
-    <textarea name="post-body" id="editpost-body" cols="30" rows="10" class="form-input"></textarea>
-    <button class="btn" id = "edit-btn">Submit</button>
+  <form class="card-body" data-id="{{posts.dataValues.id}}" id="edit-post-form">
+    <div class="form-group">
+      <label for="editpost-title">Title:</label>
+      </br>
+      <input type="text" class="form-input" name="editpost-title" id="editpost-title" />
+    </div>
+    <div class="form-group">
+      <label for="editpost-title">Description:</label>
+      </br>
+      <textarea name="editpost-body" id="editpost-body" cols="30" rows="10" class="form-input"></textarea>
+    </div>
+    <div class="form-group">
+      <button class="btn btn btn-secondary" type="submit" id="edit-btn">Submit</button>
+    </div>
   </form>
 </div>
 
-<script src ="/js/post.js"></script>
+<script src="/js/editpost.js"></script>

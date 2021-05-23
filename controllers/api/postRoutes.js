@@ -69,6 +69,7 @@ router.put('/edit/:id', withAuth, async (req, res) => {
 //backend works not front end
 router.post('/:id', withAuth, async (req, res) => {
     try {
+        console.log(req.session.user_id);
         const newComment = await Comment.create({
             ...req.body,
             post_id: req.params.id,
