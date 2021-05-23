@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const editpostform = document.getElementById("edit-post-form");
+    const editpostform = document.querySelector(".edit-post-form");
     const deleteButton = document.getElementById('delete-button');
 
 
@@ -7,13 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const editPost = async (event) => {
         event.preventDefault();
-        console.log("testing");
         const id = event.target.getAttribute("data-id");
 
         const title = document.querySelector('#editpost-title').value.trim();
         const description = document.querySelector('#editpost-body').value.trim();
 
         console.log(title, description);
+        console.log(id);
 
         if (title && description) {
             const response = await fetch(`/api/posts/edit/${id}`, {

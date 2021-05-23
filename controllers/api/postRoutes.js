@@ -50,16 +50,15 @@ router.get('/:id', withAuth, async (req, res) => {
 //update the post that was selected to be edit
 router.put('/edit/:id', withAuth, async (req, res) => {
     try {
-        const [affectedRows] = await Post.update(req.body, {
+        const updatedPost = await Post.update(req.body, {
             where: {
                 id: req.params.id,
             },
         })
-        if (affectedRows > 0) {
+        if (updatedPost > 0) {
             // res.status(200).end();
-            res.status(200),json(affectedRows);
+            res.status(200).json(updatedPost);
         }
-        console.log(affectedRows);
     } catch (err) {
         res.status(400).json(err);
     }
