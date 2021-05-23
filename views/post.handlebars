@@ -1,17 +1,17 @@
 <div>
-  
+
   {{!-- {{#with posts as |post|}}
   {{#with posts.user as |user|}} --}}
-   {{!-- {{#each posts as |post|}} --}}
+  {{!-- {{#each post as |post|}} --}}
+  {{log post}}
   <section class="post-card">
-    <header>{{post.title}} --by {{user.username}}</header>
-    <p>{{post.description}}</p>
-    {{!-- <button><a href="/newcomment">Comment<a></button> --}}
+    <header>{{post.dataValues.title}}</header>
+    <p>{{post.dataValues.description}}</p>
   </section>
-   {{!-- {{/each}} --}}
+  {{!-- {{/each}} --}}
   {{!-- {{/with}}
   {{/with}} --}}
- 
+
 
   {{#each comments as |comment|}}
   <section class="comment-card">
@@ -21,13 +21,13 @@
   </section>
   {{/each}}
 
-    <div class="card-header">
-        <h2>New Comment</h2>
-    </div>
-    <form class="card-body" id="new-comment">
-        <textarea name="comment-body" id="comment-body" cols="30" rows="10" class="form-input"></textarea>
-        <button class="btn" id="comment-btn">Submit</button>
-    </form>
+  <div class="card-header">
+    <h2>New Comment</h2>
+  </div>
+  <form class="card-body" id="new-comment">
+    <textarea name="comment-body" id="comment-body" cols="30" rows="10" class="form-input"></textarea>
+    <button class="btn" id="comment-btn">Submit</button>
+  </form>
 </div>
 
 {{!-- <a href="/dashboard/new">New Post</a> --}}

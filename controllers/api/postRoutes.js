@@ -23,23 +23,23 @@ router.get('/edit/:id', withAuth, async (req, res) => {
 //get a # post
 router.get('/:id', withAuth, async (req, res) => {
     try {
-        const posts = await Post.findOne({
+        const post = await Post.findOne({
             where: {
                 id: req.params.id
             },
             include: [User]
         });
+        console.log(post);
         const commentData = await Comment.findAll({
             where:{
                 post_id: req.params.id
             },
             include:[User]
         });
+        console.log(commentData);
         const comments = commentData.map(comment => comment.get({plain:true}))
-        res.render('post', {
-            posts,
-            comments
-        });
+
+        res.render('post', {post, comments});
         // res.status(200).json(posts)
     } catch (err) {
         res.status(400).json(err);
